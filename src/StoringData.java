@@ -5,11 +5,36 @@ import java.io.IOException;
 
 public class StoringData {
 
+    public boolean checkForCopies (String taskName)
+    {
+        String file = "storage.txt";
+        boolean duplicates = false;
+
+        try(Scanner fileScanner = new Scanner(Paths.get(file)))
+        {
+            while(fileScanner.hasNextLine())
+            {
+                String line = fileScanner.nextLine();
+                if(line.equals("Task name: " + taskName))
+                {
+                    duplicates = true;
+                    break;
+                }
+            }
+
+        } catch (IOException e)
+        {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
+
+        return duplicates;
+    }
+
     public void saveData(Todo content)
     {
         try
         {
-
             FileWriter fileWriter = new FileWriter("storage.txt", true);
 
             fileWriter.write(String.valueOf(content) + System.lineSeparator());

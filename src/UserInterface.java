@@ -51,9 +51,19 @@ public class UserInterface {
 
                         if(a.equals("1"))
                         {
-                            System.out.print("Task name: ");
-                            String taskName = sc.nextLine();
+                            String taskName;
 
+                            while(true)
+                            {
+                                System.out.print("Task name: ");
+                                taskName = sc.nextLine();
+
+                                if(!(storingData.checkForCopies(taskName)))
+                                {
+                                    break;
+                                }
+                                System.out.println("Task already exists, try another name.");
+                            }
                             System.out.print("Deadline date (DD/MM/YYYY): ");
                             String deadline = sc.nextLine();
 
@@ -67,8 +77,19 @@ public class UserInterface {
                         }
                         else if(a.equals("2"))
                         {
-                            System.out.print("Task name: ");
-                            String taskName = sc.nextLine();
+                            String taskName;
+
+                            while(true)
+                            {
+                                System.out.print("Task name: ");
+                                taskName = sc.nextLine();
+
+                                if(!(storingData.checkForCopies(taskName)))
+                                {
+                                    break;
+                                }
+                                System.out.println("Task already exists, try another name.");
+                            }
 
                             System.out.println("Task content: ");
                             String taskContent = sc.nextLine();
