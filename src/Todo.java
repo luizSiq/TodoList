@@ -21,8 +21,7 @@ public class Todo
     private boolean deadlineActivated;
 
     public Todo(){}
-
-    // No deadline version
+    // No deadline
     public Todo(String nameTask, String taskContent)
     {
         this.nameTask = nameTask;
@@ -31,7 +30,7 @@ public class Todo
         this.deadlineActivated = false;
     }
 
-    // Deadline version
+    // With a deadline
     public Todo(String nameTask, String deadLine, String taskContent)
     {
         this.nameTask = nameTask;
@@ -48,7 +47,7 @@ public class Todo
         String currentDateDisplay = String.valueOf(currentDate);
         if(!deadlineActivated)
         {
-               deadLineDisplay = "No deadline added";
+               deadLineDisplay = "Deadline undefined";
         }
 
         return "Task name: " + nameTask + "\n" +

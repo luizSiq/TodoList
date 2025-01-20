@@ -30,21 +30,19 @@ public class UserInterface {
             System.out.println("> View a specific task (2)");
             System.out.println("> List all tasks (3)");
             System.out.println("> Remove a task (4)");
-            System.out.println("> Exit (5)");
+            System.out.println("> Wipe all the tasks (5)");
+            System.out.println("> Exit (6)");
 
             String usrInput = sc.nextLine();
 
             switch(usrInput)
             {
-                case "5":
+                case "6":
                     System.out.println("App closed");
                     return;
                 case "1":
                     while(true)
                     {
-
-                        // When saving data, check for task names that are repeating,
-                        // and ask user for a different task name
                         System.out.println("Will your task have a deadline? ");
                         System.out.println("yes(1) or no(2)");
                         String a = sc.nextLine();
@@ -67,7 +65,7 @@ public class UserInterface {
                             System.out.print("Deadline date (DD/MM/YYYY): ");
                             String deadline = sc.nextLine();
 
-                            System.out.println("Task content: ");
+                            System.out.print("Task content: ");
                             String taskContent = sc.nextLine();
 
                             task = new Todo(taskName, deadline, taskContent);
@@ -91,7 +89,7 @@ public class UserInterface {
                                 System.out.println("Task already exists, try another name.");
                             }
 
-                            System.out.println("Task content: ");
+                            System.out.print("Task content: ");
                             String taskContent = sc.nextLine();
 
                             task = new Todo(taskName, taskContent);
@@ -107,19 +105,15 @@ public class UserInterface {
                     break;
 
                 case "2":
-                    System.out.println("Task index you want to see: ");
+                    System.out.print("Task name you want to see: ");
+                    String taskName = sc.nextLine();
+                    storingData.printData(taskName);
 
-                    /*
-                    * Can use a similar configuration of deleting
-                    *
-                    * Search for "task name: {User Input}"
-                    * Print text till next empty line
-                    *
-                    * */
+
                     break;
 
                 case "3":
-                    storingData.printData();
+                    storingData.printAllData();
                     break;
 
                 case "4":
@@ -133,6 +127,29 @@ public class UserInterface {
                     * Add a option to wipe whole storage, make sure to double check if user is sure
                     * */
                     break;
+
+                case "5":
+                    System.out.println("Are you sure you want to wipe all data?");
+                    System.out.println("(1) yes  (2) no");
+                    String option = sc.nextLine();
+
+                    while(true)
+                    {
+                        if(option.equals("1"))
+                        {
+                            storingData.wipeAllData();
+                            break;
+                        }
+                        else if(option.equals("2"))
+                        {
+                            System.out.println("No data was deleted");
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Invalid input, try again!");
+                        }
+                    }
             }
 
         }
