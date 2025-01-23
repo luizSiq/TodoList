@@ -54,17 +54,32 @@ public class StoringData {
 
     public void printData(String taskName)
     {
-
-        /*
-         * Can use a similar configuration of deleting
-         *
-         * Search for "task name: {User Input}"
-         * Print text till next empty line
-         *
-         * */
-
+        boolean taskFound = false;
         try (Scanner fileScanner = new Scanner(Paths.get(file)))
         {
+            while(fileScanner.hasNextLine())
+            {
+                String fileLine = fileScanner.nextLine();
+                if(fileLine.equals("Task name: " + taskName))
+                {
+                    taskFound = true;
+                    while(fileScanner.hasNextLine())
+                    {
+                        String line = fileScanner.nextLine();
+                        if(line.isEmpty())
+                        {
+                            break;
+                        }
+                        System.out.println(line);
+                    }
+                    System.out.println("\n");
+                    break;
+                }
+            }
+
+            if (!taskFound) {
+                System.out.println("Task named " + taskName + " not found");
+            }
 
         } catch(IOException e)
         {
@@ -100,8 +115,6 @@ public class StoringData {
         * - I can create a new temporary file, that copies the content of the original file
         * - Rewrites all the data, except the one the user want to delete
         * - Deletes the copy file and keep the original
-        *
-        *
         * */
 
 
