@@ -21,6 +21,7 @@ public class Todo
     private boolean deadlineActivated;
 
     public Todo(){}
+
     // No deadline
     public Todo(String nameTask, String taskContent)
     {
@@ -43,6 +44,7 @@ public class Todo
     @Override
     public String toString()
     {
+        // The print data will be different depending if the user has setup a deadline or not
         String deadLineDisplay = String.valueOf(deadLine);
         String currentDateDisplay = String.valueOf(currentDate);
         if(!deadlineActivated)

@@ -3,7 +3,7 @@
 // Main class to initialize the other classes
 // Interface class responsible to get the information from user
 // Saving class to save the files
-// Tdo Class
+// Tdo Class to create the object class
 
 import java.util.Scanner;
 

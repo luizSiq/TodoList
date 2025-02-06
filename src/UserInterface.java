@@ -12,6 +12,7 @@ public class UserInterface {
 
     public UserInterface(Scanner scanner, Todo task)
     {
+        // Initializing the classes used in this class
         this.sc = scanner;
         this.task = task;
         this.storingData = new StoringData();
@@ -24,7 +25,9 @@ public class UserInterface {
         while(true)
         {
 
-            // Add a wipe database functionality
+            // Simple user interface
+            // The user can interact with the code through the numbers
+            // I need to add error handling for characters not expected by the program
             System.out.println("Press the number:");
             System.out.println("> Add task (1)");
             System.out.println("> View a specific task (2)");
@@ -108,8 +111,6 @@ public class UserInterface {
                     System.out.print("Task name you want to see: ");
                     String taskName = sc.nextLine();
                     storingData.printData(taskName);
-
-
                     break;
 
                 case "3":
@@ -117,15 +118,10 @@ public class UserInterface {
                     break;
 
                 case "4":
-                    System.out.println("Task index you want to remove: ");
+                    System.out.println("Task name you want to remove: ");
+                    taskName = sc.nextLine();
+                    storingData.deleteData(taskName);
 
-                    /*
-                    * Idea: ask user for task name
-                    * Search on storage.txt for -> "task name: {User Input}"
-                    * Delete content until next line.
-                    *
-                    * Add a option to wipe whole storage, make sure to double check if user is sure
-                    * */
                     break;
 
                 case "5":
@@ -151,7 +147,6 @@ public class UserInterface {
                         }
                     }
             }
-
         }
     }
 }
